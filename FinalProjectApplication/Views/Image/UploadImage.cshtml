@@ -1,0 +1,76 @@
+﻿@model FinalProjectApplication.Models.Image
+
+@{
+    ViewBag.Title = "UploadImage";
+}
+<br />
+<h2>Upload Image</h2>
+@if (ViewBag.Message != null)
+{
+    <div class="alert overlay">
+        <strong>Success!</strong><br /><br /><br />@ViewBag.Message
+    </div>
+}
+<style>
+
+
+    .overlay {
+        position: fixed;
+        width: 35%;
+        height: 18%;
+        border-color: #2E4A62;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        text-align: center;
+        background-color: #343148;
+        color: white;
+    }
+</style>
+<script>
+        window.setTimeout(function () {
+            $(".alert").fadeTo(0, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, 5000);
+</script>
+
+
+@using (Html.BeginForm("UploadImage", "Image", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @*<img src="https://img.pngio.com/blood-droppng-blood-drop-png-500_500.png" alt="Image - Blood Drop.png | Emporea Wiki | FANDOM powered by Wikia">*@
+    <div class="form-horizontal">
+
+        @if (ViewBag.SuccessMessage != null)
+        {
+            <div class="alert alert-success alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>success!</strong>@ViewBag.SuccessMessage
+            </div>
+        }
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="text" class="form-control" name="Title" placeholder="Image Title" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="file" class="form-control" name="file" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Upload" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "ShowImage")
+</div>

@@ -1,0 +1,114 @@
+﻿@model IEnumerable<FinalProjectApplication.Models.Event>
+
+@{
+    ViewBag.Title = "ShowEvent";
+}
+<br />
+<h2>ShowEvent</h2>
+@if (ViewBag.Message != null)
+{
+    <div class="alert overlay">
+        <strong>Success!</strong><br /><br /><br />@ViewBag.Message
+    </div>
+}
+<style>
+
+
+    .overlay {
+        position: fixed;
+        width: 35%;
+        height: 18%;
+        border-color: #2E4A62;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        text-align: center;
+        background-color: #343148;
+        color: white;
+    }
+</style>
+<script>
+        window.setTimeout(function () {
+            $(".alert").fadeTo(0, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, 5000);
+</script>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        @*<th>
+                @Html.DisplayNameFor(model => model.EventId)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.EventTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventDescription)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FromTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventCreateTime)
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.EventId)
+                </td>*@
+
+            <td>
+                @Html.DisplayFor(modelItem => item.EventTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventDescription)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FromTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ToTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventCreateTime)
+                </td>*@
+
+            <td>
+
+                @Html.ActionLink("Details", "DetailEvent", new { id = item.EventId })|
+                @if (Convert.ToInt32(Session["Rule"]) == 1)
+                {
+
+                    @Html.ActionLink("Cancel", "DeleteEvent", new { eventId = item.EventId })
+                }
+
+            </td>
+
+        </tr>
+    }
+
+</table>

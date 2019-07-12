@@ -1,0 +1,85 @@
+﻿@model IEnumerable<FinalProjectApplication.Models.User>
+
+@{
+    ViewBag.Title = "BloodSearch";
+}
+<br />
+<br />
+<h2>Blood Search</h2>
+<hr />
+
+<form method="post" action="~/Blood/BloodSearch" class="form-inline">
+    <div class="form-group">
+        <div class="col-md-10">
+            
+            <select class="form-control" name="searchBlood" required style="width:300px;margin:auto;">
+                <option value="">Select</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
+        </div>
+
+    </div>
+    
+            <input type="submit" class="btn btn-default" value="Search"/>
+   
+
+</form>
+<br />
+@if (ViewBag.Show != null)
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BloodGroup)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BloodGroup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+
+           
+        </tr>
+        }
+        
+
+    </table>
+}

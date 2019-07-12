@@ -1,0 +1,103 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    background-image: url('Login10.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: sans-serif;
+}
+
+.box {
+    width: 420px;
+    height: 500px;
+    background: #000;
+    opacity: .7;
+
+    margin: auto;
+    margin-top: 100px;
+    box-sizing: border-box;
+}
+
+.avator {
+    width: 100px;
+    height: 100px;
+    /*border-radius:50%;*/
+    position: absolute;
+    top: -50%;
+    /*left:calc(50%,50px);*/
+}
+
+.box h1 {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.box input {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+    .box input[type="text"], input[type="password"] {
+        margin-left: 72px;
+        border: none;
+        border-bottom: 1px solid #fff;
+        background: transparent;
+        outline: none;
+        height: 40px;
+        color: white;
+    }
+
+    .box input[type="submit"] {
+        border: none;
+        outline: none;
+        height: 40px;
+        background: #fb2525;
+        color: #fff;
+        font-size: 18px;
+        border-radius: 20px;
+        
+    }
+
+    .box input[type="button"] {
+        border: none;
+        outline: none;
+        height: 40px;
+        background: #fb2525;
+        color: #fff;
+        font-size: 18px;
+        border-radius: 20px;
+     
+    }
+
+    .box input[type="submit"]:hover {
+        cursor: pointer;
+        background: #ffc109;
+        color: #000;
+    }
+
+    .box input[type="button"]:hover {
+        cursor: pointer;
+        background: #ffc109;
+        color: #000;
+    }
+
+
+a:hover {
+    cursor: pointer;
+    background: #ffc109;
+    color: #000;
+
+}
+.aa:hover {
+    cursor: pointer;
+ background:none;
+  
+  
+}
+#msg{
+    margin-left:100px;
+}

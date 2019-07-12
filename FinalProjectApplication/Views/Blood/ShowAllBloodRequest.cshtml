@@ -1,0 +1,61 @@
+﻿@model IEnumerable<FinalProjectApplication.Models.Blood>
+
+@{
+    ViewBag.Title = "ShowAllBloodRequest";
+}
+<br />
+<h2>ShowAllBloodRequest</h2>
+<hr />
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+
+       
+        <th>
+            @Html.DisplayNameFor(model => model.RequiredBloodGroup)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+    
+        <td>
+            @Html.DisplayFor(modelItem => item.RequiredBloodGroup)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BloodId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BloodId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BloodId })
+        </td>
+    </tr>
+}
+
+</table>

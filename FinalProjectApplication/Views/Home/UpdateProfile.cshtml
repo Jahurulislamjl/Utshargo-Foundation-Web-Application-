@@ -1,0 +1,136 @@
+﻿@model FinalProjectApplication.Models.UpdateProfile
+
+@{
+    ViewBag.Title = "UpdateProfile";
+}
+<br />
+<h2>Update Profile</h2>
+
+@if (ViewBag.Message != null)
+{
+
+    <div class="alert alert-success alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong>@ViewBag.Message
+    </div>
+}
+@if (ViewBag.ErrorMessage != null)
+{
+
+    <div class="alert alert-danger alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong>@ViewBag.ErrorMessage
+    </div>
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.UserId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.BloodGroup, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.BloodGroup, new { htmlAttributes = new { @class = "form-control",@readonly="true" } })
+                    @Html.ValidationMessageFor(model => model.BloodGroup, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BloodGroup, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select id="BloodGroup" name="BloodGroup" class="form-control">
+                    <option value="@Session["BloodGroup"]">@Session["BloodGroup"]</option>
+                    @if (Session["BloodGroup"].ToString() != "A+")
+                    {
+                        <option value="A+">A+</option>
+                    }
+                    @if (Session["BloodGroup"].ToString() != "A-")
+                    {
+                        <option value="A-">A-</option>
+                    }
+                    @if (Session["BloodGroup"].ToString() != "B+")
+                    {
+                        <option value="B+">B+</option>
+                    }
+                    @if (Session["BloodGroup"].ToString() != "B-")
+                    {
+                        <option value="B-">B-</option>
+                    }
+                    @if (Session["BloodGroup"].ToString() != "AB+")
+                    {
+                        <option value="AB+">AB+</option>
+                    }
+                    @if (Session["BloodGroup"].ToString() != "AB-")
+                    {
+                        <option value="AB-">AB-</option>
+                    }
+                    @if (Session["BloodGroup"].ToString() != "O+")
+                    {
+                        <option value="O+">O+</option>
+                    }
+                    @if (Session["BloodGroup"].ToString() != "O-")
+                    {
+                        <option value="O-">O-</option>
+                    }
+
+                </select>
+                @Html.ValidationMessageFor(model => model.NewBloodGroup, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<a href="~/Home/ResetPassword">Reset Password?</a><br />
+<a href="~/Home/UpdatePhone">Change mobile number?</a>
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval");
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

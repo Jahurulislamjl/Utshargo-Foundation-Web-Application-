@@ -1,0 +1,141 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@*<body background="~/Content/Login.jpg" style="background-repeat:no-repeat;background-position:center;background-size:cover;">*@
+
+
+@*<div class="jumbotron" style="background: url('Login10.jpg');">
+        <img src="~/Content/Login.jpg" style=" width:100%;">
+    </div>*@
+
+@if (ViewBag.Message != null)
+{ 
+    <div class="alert overlay">   
+        <strong>Success!</strong><br /><br /><br />Welcome to Utsorgo Foundation @ViewBag.Message
+    </div>
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/w3css/3/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <style>
+        section {
+            margin: -103px;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        .overlay {
+            position: fixed;
+            width: 35%;
+            height: 18%;
+            border-color: #2E4A62;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+            text-align: center;
+            background-color: #343148;
+            color: white;
+        }
+    </style>
+    <script>
+        window.setTimeout(function () {
+            $(".alert").fadeTo(0, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, 5000);
+    </script>
+</head>
+<body style="background-color:#ffffff;">
+    <!-- Slide Show -->
+    <section style="margin-top:-8px;">
+        <img alt="Loading...." class="mySlides" src="~/IndexImage/1.jpg"
+             style="width:100%">
+
+        <img class="mySlides" src="~/Content/e.jpg"
+             style="width:100%">
+
+        <img class="mySlides" src="~/IndexImage/4.jpg"
+             style="width:100%">
+        <img class="mySlides" src="/IndexImage/3.jpg"
+             style="width:100%">
+        <img class="mySlides" src="~/Content/a.jpg"
+             style="width:100%">
+
+        <img class="mySlides" src="~/Content/b.jpg"
+             style="width:100%">
+
+        <img class="mySlides" src="~/Content/c.jpg"
+             style="width:100%">
+
+    </section>
+
+
+    <div>
+        <article class="w3-container w3-center w3-content" style="text-align:center">
+            <h2 class="" style="text-align:center">উৎসর্গ ফাউন্ডেশন</h2>
+            <p class=""><i>We help the helpless people</i></p><br />
+
+            <p class="" style="text-align:left;margin-left:-90px;margin-right:-100px;">We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </article>
+    </div>
+    <br />
+
+    <section class="w3-row-padding w3-center w3-light-grey">
+        <article class="w3-third">
+            <div>
+                <img src="~/Content/d.jpg" alt="Loading" style="width:100%">
+                <div>
+                    ফাউন্ডেশনের পক্ষ থেকে ইদের চিনি সেমাই বিতরণ করছেন ফাউন্ডেশনের কিছু সদস্য।
+                </div>
+            </div>
+        </article>
+        <br />
+        <article class="w3-third">
+            <div>
+            <img src="~/Content/e.jpg" alt="Loading" style="width:100%">
+            <div>
+                ইদ সামগ্রী বিতরণে ফাউন্ডেশনের কিছু সদস্য।
+            </div>
+            </div>
+                <br />
+        </article>
+        <article class="w3-third">
+            <div>
+            <img src="~/Content/f.jpg" alt="Loading" style="width:100%">
+            <div>
+                পরিষ্কার পরিচ্ছন্নতা অভিযানে বক্তব্য দিচ্ছেন সখিপুর পৌরসভার মেয়র বীর মুক্তিযুদ্ধা জনাব আবু হানিফ আজাদ।
+            </div>
+            </div>
+        </article>
+    </section>
+    <br />
+
+    <script>
+        // Automatic Slideshow - change image every 3 seconds
+        var myIndex = 0;
+        carousel();
+
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) { myIndex = 1 }
+            x[myIndex - 1].style.display = "block";
+            setTimeout(carousel, 3000);
+        }
+    </script>
+
+</body>
+</html>
+

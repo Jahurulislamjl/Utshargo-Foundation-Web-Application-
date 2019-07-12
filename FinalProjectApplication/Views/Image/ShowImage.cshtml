@@ -1,0 +1,108 @@
+﻿@model IEnumerable<FinalProjectApplication.Models.Image>
+
+@{
+    ViewBag.Title = "ShowImage";
+}
+<br />
+<h2>Image Gallery</h2>
+@if (ViewBag.Message != null)
+{
+
+    <div class="alert alert-success alert-dismissible overlay">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong><br /><br /><br />@ViewBag.Message
+    </div>
+}
+
+@if (Convert.ToInt32(Session["Rule"]) == 1)
+{
+    <p>
+        @Html.ActionLink("Add New Image", "UploadImage")
+    </p>
+}
+<style>
+    .overlay {
+        position: fixed;
+        width: 35%;
+        height: 18%;
+        border-color: #2E4A62;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        text-align: center;
+        background-color: #343148;
+        color: white;
+    }
+
+    #boxshadow {
+        position: relative;
+        -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0,0.5);
+        -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+        box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+        padding: 10px;
+        background: #343148;
+    }
+
+        /* Make the image fit the box */
+        #boxshadow img {
+            width: 100%;
+            border: 1px solid #343148;
+            border-style: inset;
+        }
+
+        #boxshadow::after {
+            content: '';
+            position: absolute;
+            z-index: -1; /* hide shadow behind image */
+            -webkit-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+            -moz-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+            width: 70%;
+            left: 15%; /* one half of the remaining 30% */
+            height: 100px;
+            bottom: 0;
+        }
+</style>
+<script>
+    window.setTimeout(function () {
+        $(".alert").fadeTo(0, 0).slideUp(500, function () {
+            $(this).remove();
+        });
+    }, 5000);
+</script>
+
+<table class="table">
+
+
+    @foreach (var item in Model)
+    {
+        <tr class="container">
+
+            <td>
+                <div id="boxshadow">
+                    <img src="@Url.Content(item.ImagePath)" style="width:100%;" />
+                    <div class="bottom-left" style="color:white;">
+                        Title: @item.Title
+                    </div>
+                </div>
+               
+
+            </td>
+            @if (Convert.ToInt32(Session["Rule"]) == 1)
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "DeleteImage", new { id = item.Id })
+                </td>
+            }
+
+        </tr>
+    }
+
+
+</table>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<a href="~/Scripts/jquery-1.10.2.min.map">~/Scripts/jquery-1.10.2.min.map</a>
